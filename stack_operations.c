@@ -57,7 +57,22 @@ void pop(struct stack * ptr)
         ptr->top--;
         printf("%d is poped \n",no);
     }
-};
+}
+
+int peek(struct stack* sp, int i)
+{
+    int arrayInd = sp->top -i + 1;
+
+    if(arrayInd < 0)
+    {
+        printf("Not a valid position for the stack\n");
+        return -1;
+    }
+    else
+    {
+        return sp->arr[arrayInd];
+    }
+}
 
 
 
@@ -89,5 +104,11 @@ int main()
 
     printf("%d\n",isEmpty(s));
     printf("%d\n",isFull(s));
+
+    for (int j = 1; j <= s->top + 1; j++)
+    {
+        printf("The value at position %d is %d\n", j, peek(s, j));
+    }
+
     return 0;
 }
